@@ -27,14 +27,17 @@ jobs:
         with:
           gradle-version: "8.9"
 
-      - uses: android-actions/setup-android@v3
-
       
+
       
       - name: Install Android SDK
         run: |
-          yes | sdkmanager --sdk_root="$ANDROID_HOME" --licenses
-          sdkmanager --sdk_root="$ANDROID_HOME" "platforms;android-35" "build-tools;35.0.0"
+          mkdir -p "$ANDROID_HOME"
+          yes | "$ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager" --sdk_root="$ANDROID_HOME" --licenses
+          "$ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager" --sdk_root="$ANDROID_HOME" "platforms;android-35" "build-tools;35.0.0"
+
+      
+     
 
       - name: Locate Gradle project
         run: find project -name settings.gradle -o -name settings.gradle.kts
