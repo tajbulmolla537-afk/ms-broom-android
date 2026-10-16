@@ -30,17 +30,11 @@ jobs:
       - uses: android-actions/setup-android@v3
 
       
+      
       - name: Install Android SDK
-        run:       - name: Install Android SDK
         run: |
           yes | sdkmanager --sdk_root="$ANDROID_HOME" --licenses
           sdkmanager --sdk_root="$ANDROID_HOME" "platforms;android-35" "build-tools;35.0.0"
-          echo "y" | sdkmanager --sdk_root="$ANDROID_HOME" --licenses
-          sdkmanager --sdk_root="$ANDROID_HOME" "platforms;android-35" "build-tools;35.0.0"
-          
-      
-          yes | sdkmanager --licenses
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Locate Gradle project
         run: find project -name settings.gradle -o -name settings.gradle.kts
@@ -54,4 +48,5 @@ jobs:
         with:
           name: MS-BROOM-APK
           path: project/**/build/outputs/apk/debug/*.apk
+          
           
