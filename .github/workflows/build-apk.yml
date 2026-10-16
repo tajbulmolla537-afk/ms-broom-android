@@ -30,7 +30,7 @@ jobs:
       - uses: android-actions/setup-android@v3
 
       - name: Install Android SDK
-                run: |
+        run: |
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
@@ -45,5 +45,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: MS-BROOM-APK
-          path: project/**/app/build/outputs/apk/debug/*.apk
+          path: project/**/build/outputs/apk/debug/*.apk
           
